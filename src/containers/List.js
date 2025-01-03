@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import List from '../components/List'
-// import { fetchArticles } from '../redux/actions'
+import { fetchArticles } from '../redux/actions'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,6 +9,11 @@ const mapStateToProps = (state) => {
 }
 
 // write mapDispatchToProps below
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchArticles: (articles) => dispatch(fetchArticles(articles)),
+    }
+}
 
-// add mapDispatchToProps instead of null
-export default connect(mapStateToProps, null)(List)
+// pass in the two functions as arguments to the `connect` function.
+export default connect(mapStateToProps, mapDispatchToProps)(List)
